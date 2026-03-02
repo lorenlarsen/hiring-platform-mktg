@@ -1,0 +1,48 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  showTagline?: boolean;
+}
+
+const { size = 'md', showTagline = false } = Astro.props;
+
+const heights: Record<string, number> = {
+  sm: 32,
+  md: 48,
+  lg: 140,
+};
+const h = heights[size];
+---
+
+<div class="logo-wrapper">
+  <img
+    src="/assets/klaras-logo.png"
+    alt="Klaras"
+    height={h}
+    class="logo-img"
+    style={`height: ${h}px; width: auto;`}
+  />
+  {showTagline && (
+    <span class="logo-tagline">It's handled.</span>
+  )}
+</div>
+
+<style>
+  .logo-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-img {
+    display: block;
+    object-fit: contain;
+  }
+  .logo-tagline {
+    font-family: 'Space Grotesk', 'Avenir Next', Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    font-style: italic;
+  }
+</style>

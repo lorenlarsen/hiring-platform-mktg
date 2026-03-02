@@ -1,0 +1,69 @@
+---
+const youGet = [
+  '50 AI-powered interviews in 60 days',
+  'Full access to the Growth plan feature set',
+  'Dedicated onboarding and setup call',
+  '3 role templates (pre-built, customizable)',
+  '2 hiring manager dashboards with scoring',
+  'Full AI Co-pilot: JD generation, interviews, screening',
+  'Pilot success playbook and ROI measurement',
+];
+const youDo = [
+  'Complete the onboarding call within 7 days',
+  'Post at least 2 open roles to the platform',
+  'Review at least 10 candidate shortlists',
+  'Provide feedback on candidate quality at Day 30',
+  'Attend a 15-min results review at Day 60',
+];
+---
+
+<section class="section pilot-offer" id="pilot">
+  <div class="container">
+    <div class="features-header">
+      <div class="section-label">Try Before You Buy</div>
+      <h2 class="section-title">60 days. 50 interviews.<br /><span class="gradient-text">Zero risk.</span></h2>
+      <p class="section-subtitle">Not sure which plan fits? Run a pilot first. Full Growth plan access, real candidates, real data &mdash; then decide.</p>
+    </div>
+    <div class="pilot-grid">
+      <div class="pilot-you-get">
+        <h4>What you get</h4>
+        <ul class="pilot-list">
+          {youGet.map(item => (
+            <li><span class="icon-check">&check;</span> {item}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="pilot-you-do">
+        <h4>What you commit to</h4>
+        <ul class="pilot-list">
+          {youDo.map(item => (
+            <li><span class="icon-arrow">&rarr;</span> {item}</li>
+          ))}
+        </ul>
+        <div class="pilot-penalty">
+          <strong>Non-completion fee:</strong> The pilot is free when you complete these steps. If your team does not engage at all (no roles posted, no reviews completed), a $2,000 non-completion fee applies. This ensures we invest onboarding resources in teams that are genuinely evaluating.
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 48px; position: relative; z-index: 1;">
+      <a href="#" class="btn-primary" style="font-size: 1.05rem; padding: 18px 40px;">
+        Apply for the Pilot
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pilot-offer { background: var(--bg-secondary); position: relative; overflow: hidden; }
+  .pilot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+  .pilot-you-get h4, .pilot-you-do h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 20px; }
+  .pilot-you-get h4 { color: var(--accent-1); }
+  .pilot-you-do h4 { color: var(--accent-2); }
+  .pilot-list { list-style: none; padding: 0; }
+  .pilot-list li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+  .pilot-list li .icon-check { color: var(--accent-1); font-weight: 700; flex-shrink: 0; }
+  .pilot-list li .icon-arrow { color: var(--accent-2); font-weight: 700; flex-shrink: 0; }
+  .pilot-penalty { margin-top: 24px; padding: 16px 20px; background: rgba(255,200,0,0.08); border: 1px solid var(--accent-3); border-radius: var(--radius); font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+  .pilot-penalty strong { color: var(--accent-3); }
+</style>

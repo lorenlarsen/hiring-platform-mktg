@@ -1,0 +1,297 @@
+---
+import Logo from './Logo.astro';
+---
+
+<div class="stealth-page">
+  <div class="stealth-content">
+    <div class="stealth-logo">
+      <Logo size="lg" />
+    </div>
+    <div class="stealth-badge">Private Beta</div>
+    <h1 class="stealth-headline">AI hiring from the people<br />that invented it.</h1>
+    <p class="stealth-sub">Klaras is an AI platform that runs your entire hiring workflow — from job description to offer letter. We are in private beta with select enterprise teams.</p>
+
+    <form class="stealth-form" id="stealth-form">
+      <div class="stealth-input-row">
+        <input
+          type="email"
+          placeholder="you@company.com"
+          required
+          class="stealth-input"
+          id="stealth-email"
+          aria-label="Email address"
+        />
+        <button type="submit" class="stealth-btn">
+          Request Beta Access
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <p class="stealth-note">No spam. We will reach out when a spot opens.</p>
+    </form>
+
+    <div class="stealth-proof">
+      <div class="proof-item">
+        <span class="proof-number">70%</span>
+        <span class="proof-label">faster screening</span>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-item">
+        <span class="proof-number">18 day</span>
+        <span class="proof-label">avg. time-to-fill</span>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-item">
+        <span class="proof-number">0</span>
+        <span class="proof-label">regret hires in beta</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stealth-footer">
+    <span>&copy; {new Date().getFullYear()} Klaras, Inc.</span>
+    <span>Det klaras. It's handled.</span>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('stealth-form') as HTMLFormElement;
+  const emailInput = document.getElementById('stealth-email') as HTMLInputElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput.value;
+    if (!email) return;
+
+    const btn = form.querySelector('.stealth-btn') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    try {
+      const res = await fetch('https://formspree.io/f/xlgwbndb', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        const formEl = document.getElementById('stealth-form') as HTMLElement;
+        formEl.innerHTML = `
+          <div class="stealth-success">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#00B3A4"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <strong>You are on the list.</strong><br />
+              <span style="color: var(--text-secondary); font-size: 0.9rem;">We will reach out to <strong>${email}</strong> when a beta spot opens.</span>
+            </div>
+          </div>
+        `;
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Request Beta Access';
+        alert('Something went wrong. Please try again.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Request Beta Access';
+      alert('Something went wrong. Please try again.');
+    }
+  });
+</script>
+
+<style>
+  .stealth-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+    position: relative;
+    padding: 40px 24px;
+  }
+
+  .stealth-content {
+    max-width: 560px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stealth-logo {
+    margin-bottom: 32px;
+  }
+
+  .stealth-badge {
+    display: inline-block;
+    background: var(--accent-4);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .stealth-headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+
+  .stealth-sub {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 480px;
+  }
+
+  .stealth-form {
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 48px;
+  }
+
+  .stealth-input-row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .stealth-input {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .stealth-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .stealth-input:focus {
+    border-color: var(--accent-2);
+    box-shadow: 0 0 0 3px rgba(0, 83, 166, 0.08);
+  }
+
+  .stealth-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-1);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 24px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+
+  .stealth-btn:hover {
+    opacity: 0.95;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(255, 59, 48, 0.2);
+  }
+
+  .stealth-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 10px;
+  }
+
+  .stealth-success {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+    padding: 20px 24px;
+    background: rgba(0, 179, 164, 0.06);
+    border: 1px solid rgba(0, 179, 164, 0.2);
+    border-radius: 12px;
+  }
+
+  .stealth-success strong {
+    color: var(--text-primary);
+  }
+
+  .stealth-proof {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 24px 32px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+
+  .proof-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .proof-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-2);
+    letter-spacing: -0.02em;
+  }
+
+  .proof-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .proof-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--border);
+  }
+
+  .stealth-footer {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 520px) {
+    .stealth-input-row {
+      flex-direction: column;
+    }
+    .stealth-proof {
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px;
+    }
+    .proof-divider {
+      width: 40px;
+      height: 1px;
+    }
+  }
+</style>

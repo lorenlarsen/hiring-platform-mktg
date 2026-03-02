@@ -1,0 +1,168 @@
+---
+const tiers = [
+  { name: 'Growth', band: 'Up to 20 roles/year', size: '20\u2013100 employees', price: '$12,000', copilot: 'Included', intelligence: 'Add-on', btnClass: 'pricing-btn-outline', btnText: 'Get Exact Pricing' },
+  { name: 'Scale', band: '21\u2013100 roles/year', size: '100\u2013500 employees', price: '$30,000', copilot: 'Included', intelligence: 'Included', btnClass: 'pricing-btn-primary', btnText: 'Get Exact Pricing', featured: true },
+  { name: 'Enterprise', band: '100+ roles or multi-country', size: 'Custom agreement', price: '$75,000', copilot: 'Included', intelligence: 'Included', btnClass: 'pricing-btn-navy', btnText: 'Talk to Sales' },
+];
+
+const copilotFeatures = [
+  'AI-generated job descriptions',
+  'AI-led structured interviews',
+  'Automated screening flows',
+  'Scored shortlists & trust scores',
+  'Compliance logs & structured feedback',
+  'Team dashboards',
+];
+
+const intelligenceFeatures = [
+  'AI scoring & candidate ranking',
+  'Team composition modeling',
+  'AI agent governance & deployment',
+  'Scenario planning & forecasting',
+  'Workforce analytics',
+  'Custom integrations & API access',
+];
+---
+
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="features-header">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">One platform. Two modules.<br /><span class="gradient-text">Pick your depth.</span></h2>
+      <p class="section-subtitle">Every plan includes AI Hiring Co-pilot. Add Talent Intelligence when you are ready for workforce design and AI scoring.</p>
+    </div>
+
+    <!-- Module explainer -->
+    <div class="module-row">
+      <div class="module-box copilot-module">
+        <div class="module-tag" style="color: var(--accent-2);">Included in all plans</div>
+        <h4>AI Hiring Co-pilot</h4>
+        <ul>
+          {copilotFeatures.map(f => <li><span class="check">&check;</span> {f}</li>)}
+        </ul>
+      </div>
+      <div class="module-box intelligence-module">
+        <div class="module-tag" style="color: var(--accent-4);">Add-on or included at Scale+</div>
+        <h4>AI Talent Intelligence</h4>
+        <ul>
+          {intelligenceFeatures.map(f => <li><span class="check">&check;</span> {f}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tier cards -->
+    <div class="pricing-grid">
+      {tiers.map(t => (
+        <div class={`pricing-card ${t.featured ? 'featured' : ''}`}>
+          {t.featured && <div class="popular-badge">Most Popular</div>}
+          <div class={`pricing-tier ${t.featured ? 'tier-pro' : t.name === 'Enterprise' ? 'tier-enterprise' : 'tier-starter'}`}>{t.name}</div>
+          <div class="pricing-band">{t.band}</div>
+          <div class="pricing-size">{t.size}</div>
+          <div class="price-from">From</div>
+          <div class="price">{t.price}<span>/year</span></div>
+          <div class="module-status">
+            <div class="status-row"><span class="status-label">Co-pilot</span><span class="status-value included">{t.copilot}</span></div>
+            <div class="status-row"><span class="status-label">Intelligence</span><span class={`status-value ${t.intelligence === 'Included' ? 'included' : 'addon'}`}>{t.intelligence}</span></div>
+          </div>
+          <a href="#" class={`pricing-btn ${t.btnClass}`}>{t.btnText} &rarr;</a>
+        </div>
+      ))}
+    </div>
+
+    <!-- How pricing works -->
+    <div class="how-pricing">
+      <h3 class="how-pricing-title">How pricing works</h3>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="step-number">1</div>
+          <div>
+            <strong>Pick a plan based on annual hiring volume</strong>
+            <p>Your number of roles per year determines your tier. Org size is the sanity check, not the price driver.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="step-number">2</div>
+          <div>
+            <strong>Your whole team gets unlimited access</strong>
+            <p>No per-seat fees. Dashboards, AI interviews, matching, and compliance &mdash; included for everyone.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="step-number">3</div>
+          <div>
+            <strong>Success fees only when we over-deliver</strong>
+            <p>Above included hires: $1,000 per additional role that sticks 90 days. AI assistants that replace headcount: 5% of first-year wage savings. You pay more only when you win more.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pricing-roi">
+      <strong>The math is simple:</strong> A single bad hire costs $30,000&ndash;$50,000 in turnover and lost productivity. Klaras pays for itself with one good hire that stays.
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Module explainer */
+  .module-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 64px; }
+  .module-box { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; }
+  .copilot-module { border-top: 3px solid var(--accent-2); }
+  .intelligence-module { border-top: 3px solid var(--accent-4); }
+  .module-tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+  .module-box h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; }
+  .module-box ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .module-box li { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-secondary); }
+  .module-box li .check { color: var(--accent-4); font-weight: 700; }
+
+  /* Tier cards */
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; margin-bottom: 64px; }
+  .pricing-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 40px 36px; position: relative; transition: all 0.3s; text-align: center; }
+  .pricing-card:hover { transform: translateY(-4px); border-color: var(--border-light); }
+  .pricing-card.featured { border-color: var(--accent-1); background: linear-gradient(180deg, rgba(255,59,48,0.04) 0%, var(--bg-card) 40%); }
+  .pricing-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent-1); }
+  .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent-1); color: white; font-size: 0.7rem; font-weight: 600; padding: 4px 16px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .pricing-tier { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 8px; }
+  .tier-starter { color: var(--text-muted); }
+  .tier-pro { color: var(--accent-1); }
+  .tier-enterprise { color: var(--accent-2); }
+  .pricing-band { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+  .pricing-size { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px; }
+  .price-from { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; margin-bottom: 4px; }
+  .price { font-family: 'Space Grotesk', sans-serif; font-size: 2.4rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 20px; }
+  .price span { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); }
+
+  /* Module status badges */
+  .module-status { margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px; }
+  .status-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: var(--bg-secondary); border-radius: 8px; }
+  .status-label { font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; }
+  .status-value { font-size: 0.8rem; font-weight: 600; }
+  .status-value.included { color: var(--accent-4); }
+  .status-value.addon { color: var(--accent-3); }
+
+  .pricing-btn { display: block; text-align: center; padding: 14px 28px; border-radius: 100px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.3s; }
+  .pricing-btn-outline { color: var(--accent-2); border: 1px solid var(--accent-2); background: transparent; }
+  .pricing-btn-outline:hover { background: rgba(0,83,166,0.05); }
+  .pricing-btn-primary { color: white; background: var(--accent-1); border: none; }
+  .pricing-btn-primary:hover { box-shadow: 0 8px 30px rgba(255,59,48,0.25); transform: translateY(-1px); }
+  .pricing-btn-navy { color: white; background: var(--accent-2); border: none; }
+  .pricing-btn-navy:hover { box-shadow: 0 8px 30px rgba(0,83,166,0.25); transform: translateY(-1px); }
+
+  /* How pricing works */
+  .how-pricing { max-width: 760px; margin: 0 auto 48px; }
+  .how-pricing-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 24px; text-align: center; }
+  .how-steps { display: flex; flex-direction: column; gap: 20px; }
+  .how-step { display: flex; gap: 16px; align-items: flex-start; padding: 20px 24px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); }
+  .step-number { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-2); color: white; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+  .how-step strong { font-size: 0.9rem; color: var(--text-primary); display: block; margin-bottom: 4px; }
+  .how-step p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.55; margin: 0; }
+
+  .pricing-roi { text-align: center; padding: 20px; background: rgba(255,59,48,0.04); border: 1px solid rgba(255,59,48,0.1); border-radius: var(--radius-lg); font-size: 0.9rem; color: var(--text-secondary); }
+  .pricing-roi strong { color: var(--text-primary); }
+
+  @media (max-width: 768px) {
+    .module-row { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .how-step { flex-direction: column; gap: 12px; }
+  }
+</style>

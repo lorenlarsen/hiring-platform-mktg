@@ -1,0 +1,72 @@
+---
+/**
+ * STEALTH MODE
+ * Set to true to show only the beta waitlist landing page.
+ * Set to false to reveal the full marketing site.
+ *
+ * When true, NONE of the site content is included in the build output.
+ * View-source and inspect will only show the landing page.
+ */
+const STEALTH_MODE = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StealthLanding from '../components/StealthLanding.astro';
+
+// Full site components — only imported when stealth mode is off.
+// Astro tree-shakes unused imports at build time, so these
+// won't appear in the output when STEALTH_MODE is true.
+let WaitlistBanner, Nav, Hero, PainStrip, LogoBar, Manifesto,
+    TwoWays, HowItFits, PlatformPreview, Features, Stats,
+    Testimonials, Pricing, PilotOffer, Guarantee, FAQ,
+    DualCTA, FinalCTA, Footer;
+
+if (!STEALTH_MODE) {
+  ({ default: WaitlistBanner } = await import('../components/WaitlistBanner.astro'));
+  ({ default: Nav } = await import('../components/Nav.astro'));
+  ({ default: Hero } = await import('../components/Hero.astro'));
+  ({ default: PainStrip } = await import('../components/PainStrip.astro'));
+  ({ default: LogoBar } = await import('../components/LogoBar.astro'));
+  ({ default: Manifesto } = await import('../components/Manifesto.astro'));
+  ({ default: TwoWays } = await import('../components/TwoWays.astro'));
+  ({ default: HowItFits } = await import('../components/HowItFits.astro'));
+  ({ default: PlatformPreview } = await import('../components/PlatformPreview.astro'));
+  ({ default: Features } = await import('../components/Features.astro'));
+  ({ default: Stats } = await import('../components/Stats.astro'));
+  ({ default: Testimonials } = await import('../components/Testimonials.astro'));
+  ({ default: Pricing } = await import('../components/Pricing.astro'));
+  ({ default: PilotOffer } = await import('../components/PilotOffer.astro'));
+  ({ default: Guarantee } = await import('../components/Guarantee.astro'));
+  ({ default: FAQ } = await import('../components/FAQ.astro'));
+  ({ default: DualCTA } = await import('../components/DualCTA.astro'));
+  ({ default: FinalCTA } = await import('../components/FinalCTA.astro'));
+  ({ default: Footer } = await import('../components/Footer.astro'));
+}
+---
+
+{STEALTH_MODE ? (
+  <BaseLayout stealth title="Klaras — AI-Powered Hiring Platform" description="Klaras is in private beta. Request early access to the enterprise AI platform that runs your hiring workflows.">
+    <StealthLanding />
+  </BaseLayout>
+) : (
+  <BaseLayout>
+    <WaitlistBanner />
+    <Nav />
+    <Hero />
+    <PainStrip />
+    <LogoBar />
+    <Manifesto />
+    <TwoWays />
+    <HowItFits />
+    <PlatformPreview />
+    <Features />
+    <Stats />
+    <Testimonials />
+    <Pricing />
+    <PilotOffer />
+    <Guarantee />
+    <FAQ />
+    <DualCTA />
+    <FinalCTA />
+    <Footer />
+  </BaseLayout>
+)}

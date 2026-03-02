@@ -1,0 +1,184 @@
+---
+---
+
+<div class="waitlist-banner">
+  <div class="container">
+    <div class="waitlist-inner">
+      <div class="waitlist-text">
+        <span class="waitlist-badge">Coming Soon</span>
+        <span class="waitlist-msg">Klaras is launching soon &mdash; join the waitlist for early access.</span>
+      </div>
+      <form class="waitlist-form" id="waitlist-form">
+        <input
+          type="email"
+          placeholder="you@company.com"
+          required
+          class="waitlist-input"
+          id="waitlist-email"
+          aria-label="Email address"
+        />
+        <button type="submit" class="waitlist-btn">
+          Join Waitlist
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('waitlist-form') as HTMLFormElement;
+  const emailInput = document.getElementById('waitlist-email') as HTMLInputElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput.value;
+    if (!email) return;
+
+    const btn = form.querySelector('.waitlist-btn') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Joining…';
+
+    try {
+      const res = await fetch('https://formspree.io/f/xlgwbndb', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const inner = form.closest('.waitlist-inner') as HTMLElement;
+      if (res.ok && inner) {
+        inner.innerHTML = `
+          <div class="waitlist-text" style="justify-content: center; width: 100%;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;"><circle cx="9" cy="9" r="9" fill="#00B3A4"/><path d="M5.5 9.5l2 2 5-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="waitlist-msg">You're on the list! We'll be in touch at <strong>${email}</strong>.</span>
+          </div>
+        `;
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Join Waitlist';
+        alert('Something went wrong — please try again.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Join Waitlist';
+      alert('Something went wrong — please try again.');
+    }
+  });
+</script>
+
+<style>
+  .waitlist-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1100;
+    background: #FAFAFA;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+  }
+
+  .waitlist-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .waitlist-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .waitlist-badge {
+    background: var(--accent-1);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .waitlist-msg {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .waitlist-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .waitlist-input {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 220px;
+  }
+
+  .waitlist-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .waitlist-input:focus {
+    border-color: var(--accent-1);
+  }
+
+  .waitlist-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-1);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    white-space: nowrap;
+  }
+
+  .waitlist-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    .waitlist-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
+    .waitlist-text {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .waitlist-form {
+      width: 100%;
+      justify-content: center;
+    }
+    .waitlist-input {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+</style>

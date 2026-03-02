@@ -1,0 +1,37 @@
+---
+const stats = [
+  { value: '73%', label: 'Faster time-to-hire' },
+  { value: '92%', label: 'Match accuracy rate' },
+  { value: '2.1x', label: 'Retention improvement' },
+  { value: '14 min', label: 'Average AI interview' },
+];
+---
+
+<section>
+  <div class="container">
+    <div class="stats-row">
+      {stats.map(s => (
+        <div class="stat">
+          <div class="stat-number">{s.value}</div>
+          <div class="stat-label">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding: 80px 0; border-bottom: 1px solid var(--border); }
+  .stat { text-align: center; }
+  .stat-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+</style>

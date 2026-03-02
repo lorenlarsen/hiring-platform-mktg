@@ -1,0 +1,113 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Plug in your stack',
+    desc: 'Connect your ATS, HRIS, and job boards. Klaras fits into your existing workflow — no migration, no disruption.',
+    color: 'var(--accent-2)',
+  },
+  {
+    number: '02',
+    title: 'Turn on AI Hiring Co-pilot',
+    desc: 'AI writes JDs, runs structured interviews, screens candidates, and delivers a scored shortlist. Your team makes the call.',
+    color: 'var(--accent-1)',
+  },
+  {
+    number: '03',
+    title: 'Layer in Talent Intelligence',
+    desc: 'When you are ready, activate AI scoring, workforce design, and AI agent governance. Same platform, deeper adoption.',
+    color: 'var(--accent-4)',
+  },
+];
+---
+
+<section class="section how-it-fits" id="how-it-works">
+  <div class="container">
+    <div class="fits-header">
+      <div class="section-label">How it all fits together</div>
+      <h2 class="section-title">Three steps to an<br /><span class="gradient-text">AI-powered hiring team.</span></h2>
+    </div>
+    <div class="steps-grid">
+      {steps.map((step, i) => (
+        <div class="step-card">
+          <div class="step-number" style={`color: ${step.color};`}>{step.number}</div>
+          <h3 class="step-title">{step.title}</h3>
+          <p class="step-desc">{step.desc}</p>
+          {i < steps.length - 1 && <div class="step-connector" />}
+        </div>
+      ))}
+    </div>
+    <div class="fits-cta-row">
+      <a href="#" class="btn-primary">
+        Book an Enterprise Demo
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how-it-fits { background: var(--bg-secondary); }
+  .fits-header { text-align: center; margin-bottom: 64px; }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    position: relative;
+  }
+  .step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px 32px;
+    position: relative;
+  }
+  .step-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+  .step-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .step-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .step-connector {
+    display: none;
+  }
+  .fits-cta-row {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  @media (min-width: 769px) {
+    .step-connector {
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      width: 8px;
+      height: 8px;
+      border-top: 2px solid var(--border-light);
+      border-right: 2px solid var(--border-light);
+      transform: rotate(45deg) translateY(-50%);
+      z-index: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .steps-grid { grid-template-columns: 1fr; gap: 24px; }
+    .step-card { padding: 32px 24px; }
+  }
+</style>

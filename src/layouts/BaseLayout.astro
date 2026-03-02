@@ -1,0 +1,61 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  stealth?: boolean;
+}
+
+const {
+  title = 'Klaras — AI Hiring Platform for Enterprise Teams',
+  description = 'Klaras is the enterprise AI platform that runs your hiring today and helps you design your AI workforce for tomorrow. AI co-pilot, talent intelligence, and workforce design in one platform.',
+  stealth = false,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <slot />
+
+  {!stealth && (
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.feature-card, .bh-card, .testimonial-card, .cta-card, .stat, .split > div, .pain-grid > div, .pricing-card, .faq-item, .pilot-you-get, .pilot-you-do, .way-card, .step-card, .module-box').forEach(el => {
+          (el as HTMLElement).style.opacity = '0';
+          (el as HTMLElement).style.transform = 'translateY(30px)';
+          (el as HTMLElement).style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          observer.observe(el);
+        });
+
+        document.querySelectorAll('.feature-card, .bh-card, .testimonial-card, .pain-grid > div, .pricing-card, .faq-item, .way-card, .step-card, .module-box').forEach((el, i) => {
+          (el as HTMLElement).style.transitionDelay = `${i * 0.08}s`;
+        });
+      });
+    </script>
+  )}
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

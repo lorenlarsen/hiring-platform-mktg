@@ -1,0 +1,60 @@
+---
+const testimonials = [
+  {
+    text: '"We were drowning in 300 applications per role. Klaras cut our screening time by 70% and the candidates who made it through were genuinely better fits. Three months in, zero regret hires."',
+    name: 'Sarah Mitchell',
+    role: 'VP of Talent Acquisition, SaaS (350 employees)',
+    initials: 'SM',
+    color: 'rgba(255,59,48,0.12)',
+  },
+  {
+    text: '"The co-pilot handles the busy work so my team focuses on closing. But the real unlock was turning on Intelligence — we modeled our entire engineering org and found we could fill two roles with one senior hire plus an AI agent."',
+    name: 'David Park',
+    role: 'Chief People Officer, Fintech',
+    initials: 'DP',
+    color: 'rgba(0,83,166,0.12)',
+  },
+  {
+    text: '"We went from 42-day time-to-fill to 18 days. The AI interviews surface things resumes never could. Our hiring managers trust the shortlists and retention is up across the board."',
+    name: 'Rachel Torres',
+    role: 'Head of HR, Logistics Company (800 employees)',
+    initials: 'RT',
+    color: 'rgba(0,179,164,0.12)',
+  },
+];
+---
+
+<section class="section">
+  <div class="container">
+    <div class="features-header">
+      <div class="section-label">What Leaders Are Saying</div>
+      <h2 class="section-title">Trusted by hiring teams<br /><span class="gradient-text">that move fast.</span></h2>
+    </div>
+    <div class="testimonials-grid">
+      {testimonials.map(t => (
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+          <p class="testimonial-text">{t.text}</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style={`background: ${t.color};`}>{t.initials}</div>
+            <div>
+              <div class="testimonial-name">{t.name}</div>
+              <div class="testimonial-role">{t.role}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+  .testimonial-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .testimonial-stars { color: var(--accent-3); font-size: 0.85rem; margin-bottom: 16px; }
+  .testimonial-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 600; color: var(--text-primary); }
+  .testimonial-name { font-size: 0.85rem; font-weight: 600; }
+  .testimonial-role { font-size: 0.75rem; color: var(--text-muted); }
+</style>

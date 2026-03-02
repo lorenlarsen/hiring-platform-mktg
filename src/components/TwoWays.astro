@@ -1,0 +1,154 @@
+---
+const copilot = {
+  label: 'Most teams start here',
+  title: 'AI Hiring Co-pilot',
+  subtitle: 'For TA leaders and HR teams who want AI to run the process while humans make the final call.',
+  features: [
+    { icon: '📝', text: 'AI-generated job descriptions tuned to your voice' },
+    { icon: '🎙️', text: 'AI-led structured interviews, scored in real time' },
+    { icon: '🔄', text: 'Automated screening flows from apply to shortlist' },
+    { icon: '📊', text: 'Compliance logs and structured feedback for every hire' },
+  ],
+  cta: 'See the Co-pilot in Action',
+  ctaHref: '#how-it-works',
+};
+
+const intelligence = {
+  label: 'When you are ready for more',
+  title: 'AI Talent Intelligence',
+  subtitle: 'For People, Ops, and C-level leaders who want deeper intelligence on workforce design.',
+  features: [
+    { icon: '🧠', text: 'AI scoring and candidate ranking across your pipeline' },
+    { icon: '👥', text: 'Team composition modeling — humans and AI agents' },
+    { icon: '📈', text: 'Scenario planning for headcount, skills gaps, and costs' },
+    { icon: '🤖', text: 'AI agent governance — hire, deploy, and manage AI workers' },
+  ],
+  cta: 'Explore Intelligence Layer',
+  ctaHref: '#pricing',
+};
+---
+
+<section class="section two-ways" id="platform">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">One platform, two ways to win</div>
+      <h2 class="section-title">Start automating today.<br /><span class="gradient-text">Scale intelligence tomorrow.</span></h2>
+      <p class="section-subtitle">Every team starts with the Co-pilot. When you are ready, layer in Talent Intelligence — same platform, deeper adoption.</p>
+    </div>
+    <div class="two-ways-grid">
+      <div class="way-card copilot-card">
+        <div class="way-label">{copilot.label}</div>
+        <h3 class="way-title">{copilot.title}</h3>
+        <p class="way-subtitle">{copilot.subtitle}</p>
+        <ul class="way-features">
+          {copilot.features.map(f => (
+            <li>
+              <span class="feature-icon">{f.icon}</span>
+              <span>{f.text}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={copilot.ctaHref} class="btn-secondary way-cta">
+          {copilot.cta}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="way-card intelligence-card">
+        <div class="way-label">{intelligence.label}</div>
+        <h3 class="way-title">{intelligence.title}</h3>
+        <p class="way-subtitle">{intelligence.subtitle}</p>
+        <ul class="way-features">
+          {intelligence.features.map(f => (
+            <li>
+              <span class="feature-icon">{f.icon}</span>
+              <span>{f.text}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={intelligence.ctaHref} class="btn-secondary way-cta">
+          {intelligence.cta}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .two-ways { background: var(--bg-primary); }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .two-ways-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .way-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+  }
+  .copilot-card { border-top: 3px solid var(--accent-2); }
+  .intelligence-card { border-top: 3px solid var(--accent-4); }
+  .way-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .copilot-card .way-label { color: var(--accent-2); }
+  .intelligence-card .way-label { color: var(--accent-4); }
+  .way-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+  .way-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .way-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+  .way-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .feature-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+  }
+  .way-cta { align-self: flex-start; }
+
+  @media (max-width: 768px) {
+    .two-ways-grid { grid-template-columns: 1fr; }
+    .way-card { padding: 32px 24px; }
+  }
+</style>

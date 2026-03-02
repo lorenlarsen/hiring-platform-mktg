@@ -1,0 +1,50 @@
+---
+const benefits = [
+  { icon: '🧭', title: 'See your career path', desc: 'Klaras doesn\'t just find you a job. It maps where you\'re headed — matching you to roles that fit your goals, not just your last title.' },
+  { icon: '🛡️', title: 'Know before you apply', desc: 'Every company on Klaras has a trust score. See how they treat candidates, how fast they respond, and what people say — before you invest your time.' },
+  { icon: '🎙️', title: 'Interview on your terms', desc: 'AI interviews that let you show what you actually know. No scheduling games, no bias from a bad first impression. Just your skills and potential.' },
+  { icon: '📊', title: 'Build a track record', desc: 'Your trust score travels with you. Complete interviews honestly, show up prepared, and your reputation opens doors across the platform.' },
+];
+---
+
+<section class="section candidate-section" id="for-candidates">
+  <div class="container">
+    <div class="candidate-layout">
+      <div class="candidate-text">
+        <div class="section-label">For Job Seekers</div>
+        <h2 class="section-title">Your next move,<br /><span class="gradient-text">handled.</span></h2>
+        <p class="section-subtitle" style="margin-bottom: 32px;">Tired of applying into a void? Klaras flips the script. Tell us where you want to go, and we bring the right opportunities to you — with full transparency into the companies behind them.</p>
+        <a href="#" class="btn-primary">
+          Create Your Profile
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="candidate-benefits">
+        {benefits.map(b => (
+          <div class="candidate-benefit">
+            <span class="benefit-icon">{b.icon}</span>
+            <div>
+              <h4>{b.title}</h4>
+              <p>{b.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .candidate-section { background: var(--bg-secondary); }
+  .candidate-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .candidate-text .section-subtitle { max-width: 440px; }
+  .candidate-benefits { display: flex; flex-direction: column; gap: 24px; }
+  .candidate-benefit { display: flex; gap: 16px; align-items: flex-start; }
+  .benefit-icon { font-size: 1.5rem; flex-shrink: 0; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: rgba(0, 83, 166, 0.06); border-radius: 12px; }
+  .candidate-benefit h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: var(--text-primary); }
+  .candidate-benefit p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+  @media (max-width: 1024px) {
+    .candidate-layout { grid-template-columns: 1fr; gap: 48px; }
+  }
+</style>

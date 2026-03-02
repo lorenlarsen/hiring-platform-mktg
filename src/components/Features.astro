@@ -1,0 +1,47 @@
+---
+const features = [
+  { icon: '📝', iconClass: 'icon-coral', title: 'AI Job Descriptions', desc: 'Generate role-specific JDs tuned to your company voice and hiring standards. Post to multiple boards in one click.' },
+  { icon: '🎙️', iconClass: 'icon-navy', title: 'AI-Led Interviews', desc: 'Structured, conversational interviews scored in real time. Surfaces competency, communication, and red flags — consistently, at scale.' },
+  { icon: '🔄', iconClass: 'icon-ochre', title: 'Automated Screening', desc: 'From application to shortlist without manual sorting. AI filters, ranks, and delivers candidates your team actually wants to talk to.' },
+  { icon: '🧠', iconClass: 'icon-sage', title: 'AI Scoring & Ranking', desc: 'Go beyond gut feel. AI evaluates every candidate against your criteria and surfaces the strongest matches with transparent reasoning.' },
+  { icon: '👥', iconClass: 'icon-coral', title: 'Workforce Design', desc: 'Model team composition across humans and AI agents. Identify skills gaps, forecast headcount, and plan scenarios before you commit.' },
+  { icon: '📊', iconClass: 'icon-navy', title: 'Analytics & Compliance', desc: 'Real-time dashboards for time-to-fill, quality-of-hire, and diversity. Structured feedback and compliance logs built in.' },
+];
+---
+
+<section class="section" id="features">
+  <div class="container">
+    <div class="features-header">
+      <div class="section-label">Platform</div>
+      <h2 class="section-title">Everything your hiring team needs.<br /><span class="gradient-text">Nothing it does not.</span></h2>
+      <p class="section-subtitle">From job descriptions to workforce planning — one platform handles it all.</p>
+    </div>
+    <div class="features-grid">
+      {features.map(f => (
+        <div class="feature-card">
+          <div class={`feature-icon ${f.iconClass}`}>{f.icon}</div>
+          <h3>{f.title}</h3>
+          <p>{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 36px; transition: all 0.3s; position: relative; overflow: hidden; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03); }
+  .feature-card:hover { border-color: var(--border-light); background: var(--bg-card-hover); transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+  .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; opacity: 0; transition: opacity 0.3s; }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-card:nth-child(1)::before, .feature-card:nth-child(4)::before { background: var(--accent-1); }
+  .feature-card:nth-child(2)::before, .feature-card:nth-child(5)::before { background: var(--accent-2); }
+  .feature-card:nth-child(3)::before, .feature-card:nth-child(6)::before { background: var(--accent-3); }
+  .feature-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 20px; }
+  .icon-coral { background: rgba(255, 59, 48, 0.08); }
+  .icon-navy { background: rgba(0, 83, 166, 0.08); }
+  .icon-ochre { background: rgba(255, 200, 0, 0.12); }
+  .icon-sage { background: rgba(0, 179, 164, 0.1); }
+  .feature-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.01em; }
+  .feature-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
+</style>

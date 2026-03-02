@@ -1,0 +1,49 @@
+---
+const stats = [
+  { value: '42 days', label: 'average time-to-fill across industries' },
+  { value: '52%', label: 'of companies say bad hires damage team morale' },
+  { value: '$30K+', label: 'average cost of one bad hire including turnover' },
+  { value: '46%', label: 'of new hires fail within 18 months' },
+];
+---
+
+<div class="pain-strip">
+  <div class="container">
+    <div class="pain-grid">
+      {stats.map(s => (
+        <div>
+          <div class="pain-stat">{s.value}</div>
+          <div class="pain-label">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .pain-strip {
+    padding: 72px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-secondary);
+  }
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    text-align: center;
+  }
+  .pain-stat {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--accent-1);
+    margin-bottom: 6px;
+  }
+  .pain-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+</style>

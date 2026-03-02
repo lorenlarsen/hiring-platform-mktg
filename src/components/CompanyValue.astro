@@ -1,0 +1,50 @@
+---
+const benefits = [
+  { icon: '⚡', title: 'Candidates who actually fit', desc: 'Stop sorting through hundreds of mismatched resumes. Klaras matches you to candidates based on culture, values, and growth trajectory — not just keyword overlap.' },
+  { icon: '🎯', title: 'AI interviews that screen for real', desc: 'Structured, bias-reduced interviews surface competency, communication, and red flags in minutes. You get a scored shortlist, not a stack of guesses.' },
+  { icon: '🛡️', title: 'Trust scores you can rely on', desc: 'Every candidate carries a trust score. Verified interviews, flagged concerns, and honest track records — so you know who\'s real before you invest time.' },
+  { icon: '📈', title: 'Retention, not just placement', desc: 'Klaras optimizes for people who stay. Mutual matching means candidates who chose your company, not just ones who needed a job.' },
+];
+---
+
+<section class="section company-section" id="for-companies">
+  <div class="container">
+    <div class="company-layout">
+      <div class="company-benefits">
+        {benefits.map(b => (
+          <div class="company-benefit">
+            <span class="benefit-icon">{b.icon}</span>
+            <div>
+              <h4>{b.title}</h4>
+              <p>{b.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="company-text">
+        <div class="section-label">For Hiring Leaders</div>
+        <h2 class="section-title">The right hire,<br /><span class="gradient-text">handled.</span></h2>
+        <p class="section-subtitle" style="margin-bottom: 32px;">You don't need more applicants. You need the right ones. Klaras brings you candidates who match your culture and goals — pre-screened, trust-scored, and ready to stay.</p>
+        <a href="#" class="btn-secondary">
+          Book a 30-Minute Demo
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .company-section { background: var(--bg-primary); }
+  .company-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .company-text .section-subtitle { max-width: 440px; }
+  .company-benefits { display: flex; flex-direction: column; gap: 24px; }
+  .company-benefit { display: flex; gap: 16px; align-items: flex-start; }
+  .company-benefit .benefit-icon { font-size: 1.5rem; flex-shrink: 0; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: rgba(255, 59, 48, 0.06); border-radius: 12px; }
+  .company-benefit h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: var(--text-primary); }
+  .company-benefit p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+  @media (max-width: 1024px) {
+    .company-layout { grid-template-columns: 1fr; gap: 48px; }
+  }
+</style>

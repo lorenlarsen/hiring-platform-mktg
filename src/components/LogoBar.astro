@@ -1,0 +1,43 @@
+---
+const logos = ['Acme Corp', 'NovaTech', 'Meridian Health', 'Summit Partners', 'Brightline'];
+---
+
+<div class="logo-bar">
+  <div class="container">
+    <p>Trusted by companies across industries</p>
+    <div class="logo-row">
+      {logos.map(name => <span>{name}</span>)}
+    </div>
+  </div>
+</div>
+
+<style>
+  .logo-bar {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .logo-bar p {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+  .logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+    flex-wrap: wrap;
+    opacity: 0.5;
+  }
+  .logo-row span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+  }
+</style>

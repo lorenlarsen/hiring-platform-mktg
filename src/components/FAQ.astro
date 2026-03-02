@@ -1,0 +1,36 @@
+---
+const faqs = [
+  { q: 'How is pricing structured?', a: 'Plans are based on annual hiring volume, not seats. Your whole team gets access. Growth starts at $12,000/year for up to 20 roles, Scale at $30,000/year for up to 100, and Enterprise at $75,000/year for 100+ or multi-country. AI Hiring Co-pilot is included in every plan. AI Talent Intelligence is an add-on for Growth and included at Scale and Enterprise.' },
+  { q: 'What are the success fees?', a: 'Above your included hires, it is $1,000 per additional filled role that sticks 90 days. For AI assistants that replace one or more FTEs, it is the greater of $5,000 or 5% of first-year wage savings. You pay more only when you win more.' },
+  { q: 'What is the difference between Co-pilot and Intelligence?', a: 'AI Hiring Co-pilot automates your hiring workflows: JD generation, AI interviews, screening, and shortlisting. Your team still makes every decision. AI Talent Intelligence adds scoring, ranking, workforce design, and AI agent governance for teams that want deeper analytical power.' },
+  { q: 'What is the 60-day pilot?', a: 'A free trial of the full Growth plan: 50 AI interviews, matching, dashboards, and compliance tools. If you complete the engagement steps, it is completely free. If your team does not engage (no roles posted, no reviews), a $2,000 non-completion fee applies.' },
+  { q: 'How does the AI interview work?', a: 'Candidates complete a structured, conversational AI interview tailored to the role. Klaras evaluates competency, communication, culture fit, and flags concerns. Your team gets a scored shortlist. The AI runs the process — humans make the final call.' },
+  { q: 'Can I integrate with my ATS and HRIS?', a: 'Yes. Growth plans export candidate data in standard formats. Scale and Enterprise include native integrations with Greenhouse, Lever, Workable, BambooHR, and more. We add new integrations every quarter.' },
+  { q: 'What is workforce design?', a: 'Part of the AI Talent Intelligence module. It helps you model team composition across humans and AI agents, identify skills gaps, forecast headcount, and run scenario planning before you commit to hires.' },
+  { q: 'What happens if I outgrow my plan?', a: 'You graduate to the next tier. If you are on Growth and fill more than 20 roles, you pay $1,000 per extra role. If volume consistently exceeds your band, we recommend stepping up at renewal.' },
+];
+---
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="features-header">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common questions.<br /><span class="gradient-text">Straight answers.</span></h2>
+    </div>
+    <div class="faq-grid">
+      {faqs.map(f => (
+        <div class="faq-item">
+          <div class="faq-q">{f.q}</div>
+          <div class="faq-a">{f.a}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+  .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+  .faq-q { font-size: 0.95rem; font-weight: 600; margin-bottom: 10px; color: var(--text-primary); }
+  .faq-a { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; }
+</style>

@@ -1,0 +1,77 @@
+---
+---
+
+<section class="section" id="trust-score" style="background: var(--bg-secondary);">
+  <div class="container">
+    <div class="split">
+      <div>
+        <div class="section-label">How Trust Works</div>
+        <h2 class="section-title">Both sides measured.<br /><span class="gradient-text">Both sides transparent.</span></h2>
+        <p class="section-subtitle" style="margin-bottom: 24px;">When a company ghosts candidates, their trust score drops. When a candidate misrepresents themselves, interviewers flag it. Trust isn't a feeling — it's a metric that both sides can see.</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7;">Candidates filter out low-trust companies. Companies see verified, high-trust candidates first. Fraud gets flagged automatically. Slow decisions get penalized. The result? Faster hiring, better fits, and people who actually stay.</p>
+      </div>
+      <div class="split-visual">
+        <div class="trust-cards">
+          <div class="trust-card">
+            <div class="trust-card-header">
+              <span class="trust-card-icon coral-icon">&#128100;</span>
+              <div>
+                <div class="trust-card-name">Sarah Chen</div>
+                <div class="trust-card-role">Senior Product Designer</div>
+              </div>
+              <div class="trust-score-display">
+                <div class="trust-score-number" style="color: var(--accent-1);">5.0</div>
+                <div class="trust-score-label">Trust</div>
+              </div>
+            </div>
+            <div class="trust-card-metrics">
+              <div class="trust-metric-row"><span>Interviews completed</span><span class="trust-metric-val">4</span></div>
+              <div class="trust-metric-row"><span>Avg interviewer rating</span><span class="trust-metric-val">4.9 / 5</span></div>
+              <div class="trust-metric-row"><span>Fraud flags</span><span class="trust-metric-val" style="color: var(--accent-4);">0</span></div>
+              <div class="trust-metric-row"><span>Status</span><span class="trust-metric-val" style="color: var(--accent-4);">Good standing</span></div>
+            </div>
+          </div>
+          <div class="trust-card">
+            <div class="trust-card-header">
+              <span class="trust-card-icon navy-icon">&#127970;</span>
+              <div>
+                <div class="trust-card-name">NovaTech Inc.</div>
+                <div class="trust-card-role">Last 12 months</div>
+              </div>
+              <div class="trust-score-display">
+                <div class="trust-score-number" style="color: var(--accent-2);">4.7</div>
+                <div class="trust-score-label">Trust</div>
+              </div>
+            </div>
+            <div class="trust-card-metrics">
+              <div class="trust-metric-row"><span>Candidates interviewed</span><span class="trust-metric-val">83</span></div>
+              <div class="trust-metric-row"><span>Avg time-to-decision</span><span class="trust-metric-val">3.2 days</span></div>
+              <div class="trust-metric-row"><span>Candidate satisfaction</span><span class="trust-metric-val">4.6 / 5</span></div>
+              <div class="trust-metric-row"><span>Response rate</span><span class="trust-metric-val">94%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .split-visual { position: relative; overflow: hidden; }
+  .trust-cards { display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 1; }
+  .trust-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03); }
+  .trust-card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .trust-card-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; color: var(--text-primary); }
+  .trust-card-icon.coral-icon { background: rgba(255, 59, 48, 0.08); }
+  .trust-card-icon.navy-icon { background: rgba(0, 83, 166, 0.08); }
+  .trust-card-name { font-size: 0.9rem; font-weight: 600; }
+  .trust-card-role { font-size: 0.75rem; color: var(--text-muted); }
+  .trust-score-display { margin-left: auto; text-align: center; }
+  .trust-score-number { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; line-height: 1; }
+  .trust-score-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-top: 2px; }
+  .trust-card-metrics { }
+  .trust-metric-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; font-size: 0.78rem; color: var(--text-secondary); border-bottom: 1px solid var(--border); }
+  .trust-metric-row:last-child { border-bottom: none; }
+  .trust-metric-val { font-weight: 600; font-family: 'Space Grotesk', sans-serif; color: var(--text-primary); }
+</style>

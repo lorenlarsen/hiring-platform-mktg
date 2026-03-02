@@ -1,0 +1,43 @@
+---
+---
+
+<section class="section" style="background: var(--bg-secondary);">
+  <div class="container">
+    <div class="features-header">
+      <div class="section-label">Get Started</div>
+      <h2 class="section-title">Two ways to start.<br /><span class="gradient-text">One platform.</span></h2>
+    </div>
+    <div class="dual-cta">
+      <div class="cta-card for-companies">
+        <div class="cta-card-label">Start with Co-pilot</div>
+        <h3>Let AI run your<br />hiring workflows.</h3>
+        <p>JD generation, AI interviews, automated screening, and scored shortlists. Your team makes the final call — AI handles everything else.</p>
+        <a href="#" class="cta-btn">Book an Enterprise Demo &rarr;</a>
+      </div>
+      <div class="cta-card for-candidates">
+        <div class="cta-card-label">Add Intelligence</div>
+        <h3>Design your<br />AI workforce.</h3>
+        <p>AI scoring, team composition modeling, scenario planning, and AI agent governance. The strategic layer for leaders who want to see around corners.</p>
+        <a href="#pricing" class="cta-btn">Explore Plans &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dual-cta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+  .cta-card { border-radius: var(--radius-xl); padding: 56px 48px; position: relative; overflow: hidden; transition: transform 0.3s; }
+  .cta-card:hover { transform: translateY(-4px); }
+  .cta-card.for-companies { background: rgba(255,59,48,0.06); border: 1px solid var(--accent-1); }
+  .cta-card.for-candidates { background: rgba(0,83,166,0.06); border: 1px solid var(--accent-2); }
+  .cta-card-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 16px; font-weight: 600; }
+  .for-companies .cta-card-label { color: var(--accent-1); }
+  .for-candidates .cta-card-label { color: var(--accent-2); }
+  .cta-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .cta-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 28px; max-width: 360px; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 100px; font-weight: 600; font-size: 0.9rem; text-decoration: none; color: white; transition: all 0.3s; }
+  .for-companies .cta-btn { background: var(--accent-1); }
+  .for-companies .cta-btn:hover { box-shadow: 0 8px 30px rgba(255,59,48,0.25); }
+  .for-candidates .cta-btn { background: var(--accent-2); }
+  .for-candidates .cta-btn:hover { box-shadow: 0 8px 30px rgba(0,83,166,0.25); }
+</style>
